@@ -6,7 +6,7 @@ VERSION=`cat ../VERSION`
 CFLAGS=-I../ -DLIBRARY -DVERSION=\"$(VERSION)\" # necessary C compiler flags
 
 HEADERS=mathomatic.h ../includes.h ../license.h ../standard.h ../am.h \
-		../externs.h ../blt.h ../complex.h ../proto.h ../altproto.h ../VERSION
+		../externs.h ../blt.h ../complex.h ../proto.h ../altproto.h
 
 MATHOMATIC_OBJECTS += globals.bc am.bc solve.bc help.bc parse.bc cmds.bc simplify.bc \
 		  factor.bc super.bc unfactor.bc poly.bc diff.bc integrate.bc \
@@ -16,12 +16,12 @@ MATHOMATIC_SOURCES=../factor.c ../globals.c ../am.c ../solve.c ../help.c ../pars
 
 EMSCRIPTEN_ARGS=-s ALLOW_MEMORY_GROWTH=1 -s VERBOSE=1 -s EXPORTED_FUNCTIONS='["_matho_init", "_matho_process", "_matho_parse", "_matho_clear", "_free_mem", "_solve_function", "_init"]'
 
-.PHONY: lib
+.PHONY: math.js
 
-all: lib
+all: math.js
 
-lib:  $(HEADERS) 
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(EMSCRIPTEN_ARGS) $(MATHOMATIC_SOURCES) -o math.js
+math.js: $(MATHOMATIC_SOURCES)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(EMSCRIPTEN_ARGS) $^ -o $@
 
 clean:
 	rm -f *.o *.bc *.js
