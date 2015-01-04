@@ -15,6 +15,8 @@ Out of the box it supports:
 * solving for different variables
 * simplification
 
+Live demo is [available here](http://josephlewis.net/apps/BeanCounter/).
+
 
 Environment
 -----------
