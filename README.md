@@ -37,6 +37,23 @@ Running Time
 The execution speed of mathomatic in the browser is fairly good, it takes about
 as much time as WolframAlpha does to return results.
 
+Contributing
+------------
+
+Patches/Addons would be welcomed, a list of potential projects (from least 
+difficult to most) would be:
+
+* Unit Conversion
+* Mortgage Calculator
+* A better tutorial
+* Optionally show the steps for solving
+* Typeahead suggestions based on the plugins
+* Plotting Functions
+* A console for Mathomatic
+* Adding support for trig functions in Mathomatic through an integrated M4 replacer (regex stuff)
+* Replace the Mathomatic with something that works better or is native
+* Anything else you choose and have interest in!
+
 License
 =======
 
