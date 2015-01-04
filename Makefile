@@ -20,8 +20,12 @@ mathomatic_js:
 	$(MAKE) -C $(MATHOMATIC_DIR)
 	mv $(MATHOMATIC_DIR)/math.js $(JS_DIR)/math.js
 
+output:
+    mkdir -p output
+
 # 
 bc: mathomatic_js
+
 	zip -r output/app.nw src/*
 
 bc_linux: bc
@@ -45,7 +49,7 @@ bc_mac: bc
 	
 
 clean:
-	rm -rf output/*
+	rm -rf output
 	$(MAKE) -C $(MATHOMATIC_DIR) clean
 
 webclean:

@@ -12,11 +12,7 @@ MATHOMATIC_OBJECTS += globals.bc am.bc solve.bc help.bc parse.bc cmds.bc simplif
 		  factor.bc super.bc unfactor.bc poly.bc diff.bc integrate.bc \
 		  complex.bc complex_lib.bc list.bc gcd.bc factor_int.bc 
 
-MATHOMATIC_SOURCES=../factor.c ../globals.c ../am.c ../solve.c ../help.c \
-				   ../parse.c ../cmds.c ../simplify.c ../super.c ../unfactor.c \ 
-				   ../poly.c ../diff.c ../integrate.c ../complex.c \ 
-				   ../complex_lib.c ../list.c ../gcd.c ../factor_int.c lib.c \
-				   emscripten.c
+MATHOMATIC_SOURCES=../factor.c ../globals.c ../am.c ../solve.c ../help.c ../parse.c ../cmds.c ../simplify.c ../super.c ../unfactor.c ../poly.c ../diff.c ../integrate.c ../complex.c ../complex_lib.c ../list.c ../gcd.c ../factor_int.c lib.c emscripten.c
 
 EMSCRIPTEN_ARGS=-s ALLOW_MEMORY_GROWTH=1 -s VERBOSE=1 -s EXPORTED_FUNCTIONS='["_matho_init", "_matho_process", "_matho_parse", "_matho_clear", "_free_mem", "_solve_function", "_init"]'
 
