@@ -1,0 +1,5 @@
+This directory holds downloaded nodewebkit .tar.gz files, they can be removed
+using make webclean.
+
+Generally, you won't want to remove these because they are large and take lots
+of bandwidth. Please try to be nice to the NodeWebkit server!

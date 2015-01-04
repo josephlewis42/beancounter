@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>BeanCounter</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-tour.css">
+    <link rel="stylesheet" href="css/jumbotron-narrow.css">
+    <link rel="stylesheet" href="css/beancounter.css">
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/latex_generator.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["Gyre-Pagella"], preferredFont: "Gyre-Pagella"}
+      });
+    </script>
+
+    <script type="text/javascript">
+     var emscriptenresult = "";
+      var Module = {
+        'noInitialRun': true,
+          'print': function(text) {
+              if(emscriptenresult.length > 0)
+                  emscriptenresult += "\n"
+              emscriptenresult += text;
+          }
+      };
+    </script>
+
+    <script type="text/javascript" src="mathjax/MathJax.js"></script>
+    <script type="text/javascript" src="js/math.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tour.js"></script>
+    <script type="text/javascript" src="js/beancounter.js"></script>
+
+    <!--Beancounter Plugins-->
+    <script type="text/javascript" src="js/plugins/firstrun.js"></script>
+    <script type="text/javascript" src="js/plugins/visualize.js"></script>
+    <script type="text/javascript" src="js/plugins/variables.js"></script>
+    <script type="text/javascript" src="js/plugins/beancounter.js"></script>
+    <script type="text/javascript" src="js/plugins/calculus.js"></script>
+    <script type="text/javascript" src="js/plugins/solve.js"></script>
+    <script type="text/javascript" src="js/plugins/help.js"></script>
+
+
+
+    <!--Frontend Beancounter Stuff-->
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+        var bc = new BeanCounter("curr_eq", "results_area");
+        document.getElementById("curr_eq").onkeyup = function(evt){
+            bc.keyhandler(evt);
+        };
+
+        document.getElementById("calcButton").onclick = function(){
+            bc.keyhandler();
+            return false;
+        };
+
+
+        document.getElementById("aboutButton").onclick = function(){
+            bc.update("version about");
+            return false;
+        };
+
+        document.getElementById("tutorialButton").onclick = function(){
+            show_tour();
+            return false;
+        };
+
+
+
+        bc.update("firstrun version");
+    });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <nav>
+              <ul class="nav nav-pills pull-right">
+                <li role="presentation"><a href="#" id="tutorialButton">Tutorial</a></li>
+                <li role="presentation"><a href="#" id="aboutButton">About</a></li>
+              </ul>
+            </nav>
+            <h3 class="text-muted"><img src="img/bean.svg" width="32px" height="32px" id="beancounter"></img>BeanCounter</h3>
+        </div>
+
+
+        <div id="input_area" class="input-group">
+            <input type="text" id="curr_eq" class="form-control" autofocus="true" placeholder="Enter your equation"></input>
+            <span class="input-group-btn">
+              <button class="btn btn-default" id="calcButton" type="button">Calculate</button>
+            </span>
+        </div>
+
+
+        <div id="results_area">
+        </div>
+
+
+          <footer class="footer">
+            <p>&copy; Joseph Lewis 2014, MIT/GPL license.</p>
+          </footer>
+
+    </div>
+</body>
+</html>
