@@ -12,10 +12,11 @@ var BeanCounterGeneral = {
      **/
     basicPlugins:[],
     replacements:{  "text":"([\\w]+)",
-                    "integer":"([\\d]+)",
-                    "float":"([\\d[.\\d]+]+)",
+                    "integer":"([-+]?\\d+)",
+                    "float":"([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)", // http://www.regular-expressions.info/floatingpoint.html
+                    "list":"((?:(?:[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)[\\s,]*)+)", // floating point list
                     "expression":"(.+[\\+\\-\\*/\\^\\(\\)].+)", // will not test for correctness, just form
-                    "percentage":"([\\d]+.[\\d]+|[\\d]+)[\\s]?(?:pct|percent|%)"},
+                    "percentage":"([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)[\\s]?(?:pct|percent|%)"},
     /**
      * Registers an advanced plugin that is called when the matcher
      * is matched.
@@ -32,11 +33,15 @@ var BeanCounterGeneral = {
      * for example:
      *
      *      {"Name":"Arthur", "Age":"42"}
+     * 
+     * if funname is provided then console.log will pretty print the
+     * function name while parsing (useful for debugging)
      **/
-    registerAdvancedPlugin : function(matcher, fun) {
+    registerAdvancedPlugin : function(matcher, fun, funname) {
         var re_match = /{([\w]+\|[\w]+)}/gi;
         var output_string = matcher;
         var capture_names = [];
+        funname = funname | "advanced plugin";
 
         while ( ( match = re_match.exec( matcher ) ) ){
             console.log(match);
@@ -51,7 +56,7 @@ var BeanCounterGeneral = {
         console.log(capture_names);
 
         this.basicPlugins.push(function(bc){
-            console.log("calling advanced plugin");
+            console.log("calling " + funname);
             var outputMap = {};
             var rx = new RegExp(output_string, "gi");
 
@@ -60,6 +65,7 @@ var BeanCounterGeneral = {
             // check to see if this is a match
             if(captures == null){
                 console.log("\t"+bc.expression+" Not a match for "+output_string);
+                console.log("\treturning");
                 return;
             }
 
@@ -184,6 +190,28 @@ BeanCounter.prototype.addResult = function(title, htmlContent) {
     document.getElementById(this.output_id).innerHTML += resultText;
 };
 
+// Converts a map of title -> value pairs to an HTML table
+BeanCounter.prototype.constructTable = function(tableContents) {
+    "use strict"; // strict mode for intelligence.
+    
+    var htmlContent = "";
+    
+    htmlContent += "<table class='table table-striped'>";
+    
+    // http://stackoverflow.com/a/684692
+    for (var key in tableContents) {
+        if (tableContents.hasOwnProperty(key)) { // ignore prototypes if passed in
+            
+            htmlContent += "<tr><th>" + String(key) + "</th><td>" + String(tableContents[key]) + "</td></tr>";
+        }
+    }
+    
+    htmlContent += "</table>";
+
+    return htmlContent;
+};
+
+
 // Updates the expression and output based on it
 BeanCounter.prototype.update = function(expression) {
     "use strict"; // strict mode for intelligence.
@@ -250,7 +278,23 @@ BeanCounter.prototype.hasNumericalAnswer = function()
     return false;
 };
 
-
+// Changes a string matching the list item to a list of numbers,
+// can return a list with only a single element.
+BeanCounter.prototype.evalList = function(list){
+    
+    "use strict";
+    
+    var nums = list.split(/[\s,]+/);
+    var output = [];
+    
+    // TODO replace this with list comprehensions when EMCA 7 comes out
+    for(var i in nums) {
+        console.log(output);
+        output.push(parseFloat(nums[i]));
+    }
+    
+    return output;
+};
 
 BeanCounter.prototype.getVariables = function()
 {
