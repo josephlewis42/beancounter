@@ -81,6 +81,106 @@ var BeanCounterGeneral = {
             }
             fun(bc, outputMap);
         });
+    },
+    
+    
+    
+    
+    /**
+     * Registers a multimatch plugin that is called when the matcher
+     * is matched.
+     *
+     * The function fun must have the following prototype:
+     *      function(beanCounterInstance, matcherMap)
+     *
+     * Matchers take the following format:
+     *      ["loan", "{percent|Percent}", "{currency|Value}", "{duration|Length}"]
+     * 
+     * Which would match any of the following:
+     *  30% loan for 30 years on $5000
+     *  loan on $6000 at 0.5 percent for 10 months
+     *  $3 loan for 6 days at 5000% interest
+     * 
+     * Note that items matched will go in order and will be removed from
+     * the input once matched, so asking:
+     * 
+     *      ["{percent|Percent}", "{integer|Int}"]
+     * 
+     * will match:
+     *
+     *      500% 300 
+     * 
+     * But:
+     * 
+     *      ["{integer|Int}", "{percent|Percent}"]
+     * 
+     * will not, because the integer will match the 500 first and cut it
+     * out leaving "% 300" remaining, which does not match the percent
+     * item.
+     *
+     * Where text and integer are items in the replacements map.
+     * The supplied function will be called with a map of items
+     * corresponding to the values the user supplies in the matcher,
+     * for example:
+     *
+     *      {"Name":"Arthur", "Age":"42"}
+     * 
+     * if funname is provided then console.log will pretty print the
+     * function name while parsing (useful for debugging)
+     **/
+    registerAdvancedPlugin : function(matcher, fun, funname) {
+        
+        // TODO implement me
+        
+        // for item in matcher, replace appropriately
+        // keep two arrays, things to match and their names
+        
+        // construct a function that matches one then removes it until
+        // all items are through
+        /**
+        var re_match = /{([\w]+\|[\w]+)}/gi;
+        var output_string = matcher;
+        var capture_names = [];
+        funname = funname | "advanced plugin";
+
+        while ( ( match = re_match.exec( matcher ) ) ){
+            console.log(match);
+            var val = match[1].split("|")[0];
+            var name = match[1].split("|")[1];
+
+            capture_names.push(name);
+            output_string = output_string.replace(match[0], this.replacements[val]);
+        }
+
+        console.log(output_string);
+        console.log(capture_names);
+
+        this.basicPlugins.push(function(bc){
+            console.log("calling " + funname);
+            var outputMap = {};
+            var rx = new RegExp(output_string, "gi");
+
+            var captures = rx.exec(bc.expression);
+
+            // check to see if this is a match
+            if(captures == null){
+                console.log("\t"+bc.expression+" Not a match for "+output_string);
+                console.log("\treturning");
+                return;
+            }
+
+            console.log("\t" + captures);
+            console.log("\t" + typeof(captures));
+            for(var i = 0; i < capture_names.length; i++) {
+                var name = capture_names[i];
+                var cap  = captures[i + 1];
+
+                outputMap[name] = cap;
+                console.log("\t" + name + " = " + cap);
+
+            }
+            fun(bc, outputMap);
+        });**/
     }
 };
 
