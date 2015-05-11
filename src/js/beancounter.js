@@ -33,7 +33,7 @@ var BeanCounterGeneral = {
      * for example:
      *
      *      {"Name":"Arthur", "Age":"42"}
-     * 
+     *
      * if funname is provided then console.log will pretty print the
      * function name while parsing (useful for debugging)
      **/
@@ -82,10 +82,10 @@ var BeanCounterGeneral = {
             fun(bc, outputMap);
         });
     },
-    
-    
-    
-    
+
+
+
+
     /**
      * Registers a multimatch plugin that is called when the matcher
      * is matched.
@@ -95,25 +95,25 @@ var BeanCounterGeneral = {
      *
      * Matchers take the following format:
      *      ["loan", "{percent|Percent}", "{currency|Value}", "{duration|Length}"]
-     * 
+     *
      * Which would match any of the following:
      *  30% loan for 30 years on $5000
      *  loan on $6000 at 0.5 percent for 10 months
      *  $3 loan for 6 days at 5000% interest
-     * 
+     *
      * Note that items matched will go in order and will be removed from
      * the input once matched, so asking:
-     * 
+     *
      *      ["{percent|Percent}", "{integer|Int}"]
-     * 
+     *
      * will match:
      *
-     *      500% 300 
-     * 
+     *      500% 300
+     *
      * But:
-     * 
+     *
      *      ["{integer|Int}", "{percent|Percent}"]
-     * 
+     *
      * will not, because the integer will match the 500 first and cut it
      * out leaving "% 300" remaining, which does not match the percent
      * item.
@@ -124,17 +124,17 @@ var BeanCounterGeneral = {
      * for example:
      *
      *      {"Name":"Arthur", "Age":"42"}
-     * 
+     *
      * if funname is provided then console.log will pretty print the
      * function name while parsing (useful for debugging)
      **/
-    registerAdvancedPlugin : function(matcher, fun, funname) {
-        
+    registerContextualPlugin : function(matcher, fun, funname) {
+
         // TODO implement me
-        
+
         // for item in matcher, replace appropriately
         // keep two arrays, things to match and their names
-        
+
         // construct a function that matches one then removes it until
         // all items are through
         /**
@@ -270,7 +270,7 @@ BeanCounter.prototype.latexify = function(expression) {
     "use strict"; // strict mode for intelligence.
 
     try {
-        return '<abbr title="' + expression + '">\\[' + parser.parse(expression) + '\\]</abbr>';
+        return '<div>' + parser.parse(expression) + '</div>';
     } catch(e) {
         return "";
     }
@@ -293,19 +293,19 @@ BeanCounter.prototype.addResult = function(title, htmlContent) {
 // Converts a map of title -> value pairs to an HTML table
 BeanCounter.prototype.constructTable = function(tableContents) {
     "use strict"; // strict mode for intelligence.
-    
+
     var htmlContent = "";
-    
+
     htmlContent += "<table class='table table-striped'>";
-    
+
     // http://stackoverflow.com/a/684692
     for (var key in tableContents) {
         if (tableContents.hasOwnProperty(key)) { // ignore prototypes if passed in
-            
+
             htmlContent += "<tr><th>" + String(key) + "</th><td>" + String(tableContents[key]) + "</td></tr>";
         }
     }
-    
+
     htmlContent += "</table>";
 
     return htmlContent;
@@ -381,18 +381,18 @@ BeanCounter.prototype.hasNumericalAnswer = function()
 // Changes a string matching the list item to a list of numbers,
 // can return a list with only a single element.
 BeanCounter.prototype.evalList = function(list){
-    
+
     "use strict";
-    
+
     var nums = list.split(/[\s,]+/);
     var output = [];
-    
+
     // TODO replace this with list comprehensions when EMCA 7 comes out
     for(var i in nums) {
         console.log(output);
         output.push(parseFloat(nums[i]));
     }
-    
+
     return output;
 };
 

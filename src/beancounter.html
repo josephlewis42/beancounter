@@ -7,21 +7,10 @@
     <link rel="stylesheet" href="css/bootstrap-tour.css">
     <link rel="stylesheet" href="css/jumbotron-narrow.css">
     <link rel="stylesheet" href="css/beancounter.css">
+    <link rel="stylesheet" href="css/mathml.css">
 
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/latex_generator.js"></script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-          processEscapes: true
-        },
-        "HTML-CSS": { availableFonts: ["Gyre-Pagella"], preferredFont: "Gyre-Pagella"}
-      });
-    </script>
+    <script type="text/javascript" src="js/mathml_generator.js"></script>
 
     <script type="text/javascript">
      var emscriptenresult = "";
@@ -35,7 +24,6 @@
       };
     </script>
 
-    <script type="text/javascript" src="mathjax/MathJax.js"></script>
     <script type="text/javascript" src="js/math.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/bootstrap-tour.js"></script>

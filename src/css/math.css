@@ -1,0 +1,384 @@
+@namespace "http://www.w3.org/1998/Math/MathML";
+math
+	{line-height:1.3em;
+	text-indent:0;}
+math[display="block"]
+	{display:block;
+	text-align:center;
+	page-break-inside:avoid;}
+mfrac
+	{display:inline-table;
+	white-space:nowrap;
+	border-collapse:collapse;
+	text-align:center;
+	vertical-align:0.9em;
+	margin:0 2px;
+	font-size:1em;}
+mfrac > *
+	{line-height:1.3em;
+	font-size:0.9em;}
+mfrac > *:first-child
+	{display:inline-table;
+	vertical-align:text-bottom;}
+mfrac > * + *
+	{border-top:solid thin;
+	display:table-row;}
+mfrac[linethickness="0"] > * + *
+	{border-top:none;}
+mfrac[linethickness="2"] > * + *, mfrac[linethickness="thick"] > * + *
+	{border-top:solid medium;}
+mfrac[numalign="left"] > *:first-child, mfrac[denalign="left"] > * + *
+	{text-align:left;}
+mfrac[numalign="right"] > *:first-child, mfrac[denalign="right"] > * + *
+	{text-align:right;}
+msub, msup, msubsup, mmultiscripts
+	{display:inline-table;
+	line-height:0.4em;}
+msubsup, msup, mmultiscripts
+	{margin-top:0.4ex;
+	table-baseline:2;}
+msubsup, msub, mmultiscripts
+	{margin-bottom:0.4ex;}
+msubsup, msup
+	{direction:rtl;}
+msub > *
+	{display:table-row;}
+none
+	{content:"\A0";}
+msubsup > *, msup > *
+	{display:table-row;
+	direction:ltr;
+	text-align:left;}
+mmultiscripts > *
+	{display:none;}
+mmultiscripts > *:first-child, mmultiscripts > mprescripts + *
+	{display:table-row;}
+mmultiscripts > mprescripts + * + *
+	{display:table-header-group;}
+msub > *:first-child:after, msub > * + *:before, 
+msubsup > *:first-child:before, msup > *:first-child:before,
+mmultiscripts > *:first-child:before
+	{display:table-cell;
+	content:"\A0";}
+msubsup > * + * + *, msup > * + *
+	{display:table-header-group;}
+msub > * + *, msup > * + *, msubsup > * + *, munder > * + *, mover > * + *, munderover > * + *,
+mmultiscripts > * + *
+	{font-size:0.7em;}
+munder, munderover, mover
+	{display:inline-table;
+	margin:1px;
+	text-align:center;}
+munder > *, munderover > *, mover > *
+	{display:table-row;}
+mover > * + *, munderover > * + * + *
+	{display:table-header-group;}
+mover, munderover
+	{table-baseline:2;}
+msqrt
+	{display:inline-block;
+	margin:1px 0 1px 22px;
+	border-top:solid 1px;
+	border-left:groove 2px;
+	padding:2px 5px 0 0;}
+msqrt:before
+	{display:inline-block;
+	vertical-align:bottom;
+	content:'';
+	width:22px;
+	height:14px;
+	background-repeat:no-repeat;
+	margin:0 3px 0 -22px;}
+msqrt:before, mroot > * + *:after
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAOCAYAAAArMezNAAAArklEQVR42mNgIAzkgJiRgYpAGIgnAfFvIF4JxKyUGsgOxKVA/ASI5wCxHRBvA+K9QMxHrqGRQLweiDOBmBdJnAWI5wPxeSAWJ8VAPSBOAWJTAuo6gPguEKsQY6gQEPOQ4Ih8IH4JxCYMNABhQPwOiN1pYbgzEL8C4hhaGG4AxM+BuJgWhisB8W0g7qOF4SJAfBqIl1EjI6EDbiDeAcQ7SUxlRAGQa5cA8RkGGoFeACG1GGdqegJfAAAAAElFTkSuQmCC");}
+mroot
+	{display:inline-table;
+	direction:rtl;}
+mroot > *
+	{display:table-cell;
+	direction:ltr;
+	text-align:left;}
+mroot > *:first-child
+	{border-top:solid 1px;
+	border-left:groove 2px;
+	padding:2px 5px 0 3px;}
+mroot > * + *
+	{vertical-align:bottom;
+	text-align:right;
+	font-size:0.7em;
+	line-height:1em;}
+mroot > * + *:after
+	{display:block;
+	content:"";
+	width:22px;
+	height:14px;
+	margin-right:-1px;
+	margin-left:auto;}
+mfenced
+	{display:inline-table;
+	border-collapse:separate;
+	border-spacing:0.2ex 0;
+	white-space:nowrap;
+	margin:1px;}
+mfenced > *:first-child
+	{display:table-row;}
+mfenced > * + *
+	{display:none;}
+mfenced > *:before, mfenced > *:after
+	{display:table-cell;
+	content:"\A0";
+	background-repeat:no-repeat;
+	background-size:100% 100%;}
+mfenced > *:before
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABtElEQVR42s2ZK0hEURCGr8UiPhYVRJAFoxssFtsafDXRKLogNpNNDDazTSxiMYhoMdtWsAibtKhssCj4ALWIoM4s58Awdb7gD3+45eO8z5z/FgWnfnEfAWoTz4tHCJhCdsQDBGxKXBd3EbBl8a14kIBtiF+pMdsS/4pnCNic+Ed8SMAq4g/xM7HWetIEaFdrROtOEuySgE0kmHqB2FKNBLtP3yGtmtatRWGd4scEexF3RIHrpnV7xGRcG+BsFDZuYO/i9ihw3wCPicn4NMDFKHDJwNS9UeCBgTWJ2W0a4GkUVnbd3YwCaw44TY6fOnyQ3hjYE3FUfRngVRQ45Lp7FgVWHXA3Clyhl8y2A4ZvtyMHnIwCzx1wLAq8cMDRKLDhgMNR4J0DlqPABwcsRYFvDtgdBX47YPHvgHiX8UnBlw2+sPGthx8O+PGFH7D4FVAt4EsKv0bxi16FliIqvFjCyzm84FShJbEfR6Rox58V+MNHhT7NVPjjUYU+b1X4AxyPCFRoiKHCYxYVGgRloVGVCg/TVGjcl4UGklloZJqFhrpZaOychQbjWWh0b7co9nPBqvX74w/Kju1j59IjnwAAAABJRU5ErkJggg==");}
+mfenced > *:after
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABl0lEQVR42s3ZPyhFYRjH8ddiEa5cJaVbd2SwWGwM/m1yR3FKNpNNBpvZJossBonFbKMs6k4s6A4Wyp/CIoXfqXd4etbnOzj1Wz+97znv3+eklFJV6UvwM6TMK20k2q9sZxx7upRzZYpEB5RbZYl+p6/KOonOKL/KJokeKD/KHAWWY/RZ+VCGKbTIXS8/VIVCLzN6TIGNDJaZIMBySt5nsElN0VXTyhUC7FBeMviodBLormnlGgHOGvCaANuVd4OOEeiRAfcIcMGAn8TH6TVgmUWilS0D7hPgiQFbBLjhul2LgtMOLKJg1YHIe3wy4A0BXhnwKwFL2qnr9mAU3HHgOD10lqNg4cCtKDjpwMMoOOrAsyg44sCLKFh3YDMK1hx4FwV7HPgQBbsd+EbMZwt+/zsQ7zL+UfBhgw9sfOrhiwO+fOELLL4F4JsUvo3iGz16FMEPS/hxDj9w4kdi9NCOXyvwiw96NcMvj/j1Fr2A4yUCtIiBl1nwQhBaqkKLaXi5Dy1IoiVTtKiLlp3Rwjhaukd/LqC/P/4AwHbtY0GeJ20AAAAASUVORK5CYII=");}
+mfenced[open="["] > *:before
+	{border-style:solid;
+	border-width:1px 0 1px 1px;
+	background-image:none;}
+mfenced[close="]"] > *:after
+	{border-style:solid;
+	border-width:1px 1px 1px 0;
+	background-image:none;}
+mfenced[open="\2016"] > *:before
+	{border-style:double;
+	border-width:0 0 0 3px;
+	background-image:none;}
+mfenced[close="\2016"] > *:after
+	{border-style:double;
+	border-width:0 3px 0 0;
+	background-image:none;}
+mfenced[open="\27e6"] > *:before
+	{border-style:double;
+	border-width:2px 0 2px 3px;
+	background-image:none;}
+mfenced[close="\27e7"] > *:after
+	{border-style:double;
+	border-width:2px 3px 2px 0;
+	background-image:none;}
+mfenced[open="|"] > *:before
+	{border-style:solid;
+	border-width:0 0 0 1px;
+	background-image:none;}
+mfenced[close="|"] > *:after
+	{border-style:solid;
+	border-width:0 1px 0 0;
+	background-image:none;}
+mfenced[open="\230a"] > *:before
+	{border-style:solid;
+	border-width:0 0 1px 1px;
+	background-image:none;}
+mfenced[close="\230b"] > *:after
+	{border-style:solid;
+	border-width:0 1px 1px 0;
+	background-image:none;}
+mfenced[open="\2308"] > *:before
+	{border-style:solid;
+	border-width:1px 0 0 1px;
+	background-image:none;}
+mfenced[close="\2309"] > *:after
+	{border-style:solid;
+	border-width:1px 1px 0 0;
+	background-image:none;}
+mfenced[open="{"] > *:before
+	{content:"\A0\A0";
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABuklEQVR42rWZuy9EURCHj0c8Qta7pRMh0WgUqBQqG4leNGRL2VZpO6GiIYobHf+DhIiSf8AjFBIkmwiNRNZvsmdjtM53J/naL+fec+7MnLkhpMeoWBZDoi1F1C12REW0pK6qQ1yIY+AJQ5M4ES+inxCWRU2UCFmXeBWfokAIN+PqMkJmG1GNwnlCWIyyL9FJCI+i8IqQNcfNMOE2IZyNMmOJPHvGGCHMouw7NQE04iYKHwlZazwqJjwjhJPu/R0SwkUn3CKEa05YJhOCsUoI95ywSAhPnXCGEF464QQhvHbCEUJ4SwvvnXCQED47YQ8hrNLCdydEUlfNkRwFJ3sjhONOeE4IF5zwgBD61LVBCPfDb3GaSpUNiI8o3CVWV4myu1Bv45J3176QBzGdKlsRT6FeP9r/I7DPqU8MizmxLnpTVoQL8UfOfVNyOTa5HGz808slOeDpC0+weAkIAS5SFngZxQs93orgzRLezuENJ94S4007fq3ALz741Qy/POLXW/wCboGOCCzwIQY+ZsEHQfioygIdpoWQw7gPH0j6RJFRQnyo689kiRLig/HGBmGj+0agPxd8/Pn98QMoXcSZw6bNQwAAAABJRU5ErkJggg==");}
+mfenced[close="}"] > *:after
+	{content:"\A0\A0";
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAABoklEQVR42sWZvUpDQRBGxx+iosS/2GoXJIKNjYVapbAyCPbBRrEMaS1NJ1ppo1gEO30HQZGU+gIxooWgQkC0ESR+iwOZBzjghdMe9t7dnZ39rplZRkyJDZE38OkTNXEgRkjxubgRg5RwQryKC9FDSXdER1QpYVZ8iTcxTEnrPspdSlh0YZuaoCHx7dISNcqGC88o4b4L0+T0EsJ1FyaWCeFsECJrMhWOHxfWqe/45MJ7SnjlwrSE+gnhafiO84RwLwjXCGE1CLcI4WYQIoWiFIRHhHApCC8J4VwQ3hLCmSC8o4VNQpgLwhYhHA3CF1rYJoSZIPygKk4ngDzvQZglhNdBWCCEJ0G4SggrBpewBeseVsfUxBy68FNMEsLU1j24tEaNclE8+o4pUNIB+ztnnkXZwGdMbIsVMS3GfZv+vxB9ZXRS8GWDLmx86+HFAS9feIHFjwD0kMKPUfygx1sRvFnC2zm84cRbYrxpx68V+MUHv5rhl0f8eotfwNGIAA8x8JgFD4LwqAoN0/C4Dw8k0cgUD3XR2BkPxrHoHvu5gP7++AUnfMSZodLInwAAAABJRU5ErkJggg==");}
+mfenced[open="\27e8"] > *:before, mfenced[open="\2329"] > *:before
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABZCAYAAAA+TwS/AAAB50lEQVR42s2ZPyiFURiHj7+Lrkhks0goEqtFWSilW8oqg5GULExWk5K6g26ZrFI3i24Go8kkkWQwSPkTA673lzOcvu7kfZSnfuvTe77vnO+c834hsORgX+gjZR2WIVI4T8oaLGukcNYyTgoPLfWUbNiyR1ZXtOQpWbvl0dJECfVmDyhZneXWMkcJZywfljZKeGIpUzKt2YplkRLuRmEXIdMze7OcUdWtxurWqalyE4UDhDAfZZfUcMtRuEnIBqNMGSWEhSi7t9R4Za2W1ygsENWtJMOd9MpqLddR9mRp9Aqnk+r2ieEeJ8JZr6zf8hVl75Zmr3Anqa7klbVYXhLhgle4nMg+LZ0emVbCVSI89VY3lcgqcWK7OMoIuz2y3mSqKOfe6rYz1W14ZJq4zxnhiEe4lJHdeKfKRUa45RFOZGTKmEdYysgews+2+St6MlNFKXqq26oy3GmP8K6KsPVfVYg/Q/wt/8k8xFcKvpb/5GuDfw8F/sUW6J4i8F0P35cFenIQ+NlGoKcvgZ8PBXqCFfgZG78FhADfUwR+kwoBvusJ/DYqygG8Lwv8Ro/3HATaFRF430agnSWB974E2p0TeP8Q73AKtAcr8C6xKAawjy3wTrtA/wUI/G8F/j9FzNNC/J+U6KOFuW87Lt0vtp6NAwAAAABJRU5ErkJggg==");}
+mfenced[close="\27e9"] > *:after, mfenced[close="\232A"] > *:after
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABZCAYAAAA+TwS/AAAByElEQVR42s2ZPSjFURiH/z4XkZvIZpFQJFaLslDqdkvdVQYjqZuFyWq6JXUH3TJZpW4WyWA0mSS6yWCQ8hGDr9+pdzid7vY+g1PP+vSe//89H+97sizLOjN4jNDCCdFHS5dp4aZoI4WzokgKW8UxPe0DMUkKC6JKCjvEs+glpUf2x7GxJO5FCyXsEV9ikYzyTJyTwlXxa2scGQMm3CejvBQf9k2RsWVRblDCMRPWyRS6MWmBEu6Y8IwSTpswME4Im8SjCStUlBUTvoscIZyPpl0ihO3ixYR3opmQHkZR5glhMRKeEsIu8WnCHzFKSGtRlHuEcCUSvolur7BffEfSdSLKi0h4ayvJNUqRMLDgFQ4mwhNi2leRMKTQsFe4nUS56xVOJcJXS3zXqCfSNa+wnAivvSk0kwgDcx5hOFafEmHNO+1qIgwpNOQR5htMu+wR5hoIH/5VhOg3xP8ynof4SkHXMr7b4PshumPjZwp+6qHnMn5zwO826O0Lvx/iN1j0jo1XAXidglZSeK2HV6N4vYxW9HjPAe+KoH0bvLOE975CmmDdObx/iHc40R4s3iXG+9hopx1/C8BfK/D3FPTFB3+Twl/N0He9P0bV3S+iamc2AAAAAElFTkSuQmCC");}
+mfenced[open=""] > *:before, mfenced[close=""] > *:after
+	{content:normal;}
+mover > * + mo[fence="true"], munder > * + mo[fence="true"]
+	{content:"\A0";
+	line-height:1ex;
+	background-size:100% 100%;
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAUCAYAAAAa2LrXAAABxElEQVR42u2YsUsCURzHnxlncmJlttYWkeDi4pBNDU6J0C4tRmPc2phb2KSL0iBt9T8EhTjWP2CFDoInCFKLINe3+gaH1ekdZ6S8L3yWd+/d7/v7+t5xpxD/WwqRcqhlIuVQa0TKoXaIlANlwCHJyDjsaQs0wRJpckxqhFZADnSBZhrXOJbjHCkoyF2VBFlQBC/AAM/AZ5rr45jBOUWuSfIewWkNYR5EwR4bOgEFcA2q4B7UwRNocRf1GMRvPIL4D7XivGa1tscaLdas00OVngr0mKXnKHv4E82BBI9TBTyA/oiG7DAA50C18KByzsDFun32UmFvCfbqihZAClwA3UXT73TALSiBYxCz4SvGNSXeo+OyN509p5iBbanc6l2L3dIAN6AMTvnrHbDoNoiAdRIGi2SSn2aKqU7YVD9CTyl61Oi5zB4aFru6yyzUcQx4eHN9aIvXwBlIg00xm9+nCntLs9fa0CNKZzYeq+N6xcmvfCbsAv8MhjWu/MygwkwMZvTtWAfAHWiDIzHFrwUTVJDZtJlVwHwxDy5BSOY0UiFmlf8a2BCfb/hS9pRjdmIfeGUetuVldmJVZuFYH9nJv8ydS3kDn8bEmYaXZFsAAAAASUVORK5CYII=");}
+munder > * + mo[fence="true"]
+	{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAUCAYAAAAa2LrXAAABzElEQVR42u2Xv0tCURzFrxlPRbEyW2uLSHBxccimBqdEaJcWozFcG3MLm3RRGqSt/oegEEf7B6zQQVBBkFoEsfPsCA8zX+9m0Y974LNc773f7znvPrlPCCE0oSSrYXYrKgdpDbPbA3aVhWXZmZ1YB2mVh2Wlmd1QGXABfCoXU/mYVcY46AG3oAkOgVfl9EZeZtNkVp7xCU5wCQbgGRTBDnD949BczKDITAbMyPneAhtIgRYn6/RAGZyCONgQf/Pqo9FbnF7L9D7KocVsbB/ZzA2OQcewgZE+qIFrUAAn3HwfxMAWCIA14gcLRPviEEZ1/Ib6AfYUY48p9lyghxo9TfLaYRZumYacLHo+dipnQRvcgDw4AiELfYW4Js892jPurUXPsWmvq1XNgQifnv6fcDd2xD+LfgLOTJ60m3P6M6zbo5civUXo9Vs0D4JgFyR51LPgCpRABVTBA2jwdeiaGLoH4Qm1wvxt2touazRYs8oeSuwpyx6T7DlID79S+rVgE0RpKAeeGMQjcBjmOjg24Jwc10S5h7p2Ucvi9Ybf4es0Uopjac5RMpF+qupgkdQ5pmRBCXBAEioOOW0TJUmtEiVJLRElSWnih393vwCZOsSZn592GQAAAABJRU5ErkJggg==");}
+menclose
+	{display:inline-table;
+	border-collapse:separate;
+	border-spacing:0.4ex 0;}
+menclose[notation="top"]
+	{border-top:solid thin;}
+menclose[notation="bottom"]
+	{border-bottom:solid thin;}
+menclose[notation="right"]
+	{border-right:solid thin;}
+menclose[notation="left"]
+	{border-left:solid thin;}
+menclose[notation="box"]
+	{border:solid thin;}
+menclose[notation="horizontalstrike"]
+	{text-decoration:line-through;}
+mtable
+	{display:inline-table;
+	line-height:1.5em;
+	text-align:center;
+	vertical-align:middle;}
+mtr
+	{display:table-row;}
+mtd
+	{display:table-cell;
+	padding:0 0.5ex;}
+mtable[columnalign="left"], mtr[columnalign="left"], mtd[columnalign="left"]
+	{text-align:left;}
+mtable[columnalign="right"], mtr[columnalign="right"], mtd[columnalign="right"]
+	{text-align:right;}
+mtable[rowalign="top"] mtd, mtable mtr[rowalign="top"] mtd, 
+math mtable mtr mtd[rowalign="top"]
+	{vertical-align:top}
+mtable[rowalign="bottom"] mtd, mtable mtr[rowalign="bottom"] mtd, 
+math mtable mtr mtd[rowalign="bottom"]
+	{vertical-align:bottom}
+mtable[rowalign="center"] mtd, mtable mtr[rowalign="center"] mtd, 
+math mtable mtr mtd[rowalign="center"]
+	{vertical-align:middle}
+mtable[frame="solid"]
+	{border:solid thin;}
+mtable[frame="dashed"]
+	{border:dashed thin;}
+mtable[rowlines="solid"], mtable[rowlines="dashed"], 
+mtable[columnlines="solid"], mtable[columnlines="dashed"]
+	{border-collapse:collapse;}
+mtable[rowlines="solid"] > mtr + mtr
+	{border-top:solid thin;}
+mtable[rowlines="dashed"] > mtr + mtr
+	{border-top:dashed thin;}
+mtable[columnlines="solid"] > mtr > mtd + mtd
+	{border-left:solid thin;}
+mtable[columnlines="dashed"] > mtr > mtd + mtd
+	{border-left:dashed thin;}
+mspace[linebreak="goodbreak"]:before
+	{content:"\200B";
+	white-space:normal;}
+mspace[linebreak="newline"]:before, mspace[linebreak="indentingnewline"]:before 
+	{content:"\000A";
+	white-space:pre;}
+mspace[width]:before
+	{content:normal;}
+mspace[width="verythinmathspace"]
+	{padding:0 0.05em;}
+mspace[width="thinmathspace"]
+	{padding:0 0.08em;}
+mspace[width="mediummathspace"]
+	{padding:0 0.11em;}
+mspace[width="thickmathspace"]
+	{padding:0 0.14em;}
+mspace[width="verythickmathspace"]
+	{padding:0 0.17em;}
+mo[largeop="true"]
+	{font-size:1.3em;
+	vertical-align:-0.1ex;}
+mo[form="infix"], * + mo
+	{padding:0 0.3ex;}
+mo[form="prefix"]
+	{padding:0 0 0 0.5ex;}
+mo[form="postfix"]
+	{padding:0 0.5ex 0 0;}
+mo[fence="true"], mo[separator="true"]
+	{padding:0;}
+mi[mathvariant="bold"], mi[mathvariant="bold-italic"], mi[mathvariant="bold-sans-serif"], 
+mi[mathvariant="sans-serif-bold-italic"],mn[mathvariant="bold"], mn[mathvariant="bold-italic"], 
+mn[mathvariant="bold-sans-serif"], mn[mathvariant="sans-serif-bold-italic"],mo[mathvariant="bold"], 
+mo[mathvariant="bold-italic"], mo[mathvariant="bold-sans-serif"], mo[mathvariant="sans-serif-bold-italic"],
+ms[mathvariant="bold"], ms[mathvariant="bold-italic"], ms[mathvariant="bold-sans-serif"], 
+ms[mathvariant="sans-serif-bold-italic"],mtext[mathvariant="bold"], mtext[mathvariant="bold-italic"], 
+mtext[mathvariant="bold-sans-serif"], mtext[mathvariant="sans-serif-bold-italic"]
+	{font-weight:bold;
+	font-style:normal;}
+mi[mathvariant="monospace"], mn[mathvariant="monospace"],mo[mathvariant="monospace"], 
+ms[mathvariant="monospace"],mtext[mathvariant="monospace"]
+	{font-family:monospace;
+	font-style:normal;}
+mi[mathvariant="sans-serif"], mi[mathvariant="bold-sans-serif"], mi[mathvariant="bold-sans-serif"], 
+mi[mathvariant="sans-serif-italic"], mi[mathvariant="sans-serif-bold-italic"],mn[mathvariant="bold-sans-serif"],
+mn[mathvariant="sans-serif"], mn[mathvariant="bold-sans-serif"], mn[mathvariant="sans-serif-italic"],
+mn[mathvariant="sans-serif-bold-italic"], mo[mathvariant="sans-serif"], mo[mathvariant="bold-sans-serif"], 
+mo[mathvariant="bold-sans-serif"], mo[mathvariant="sans-serif-italic"], mo[mathvariant="sans-serif-bold-italic"], 
+ms[mathvariant="sans-serif"], ms[mathvariant="bold-sans-serif"], ms[mathvariant="bold-sans-serif"], 
+ms[mathvariant="sans-serif-italic"], ms[mathvariant="sans-serif-bold-italic"], mtext[mathvariant="sans-serif"], 
+mtext[mathvariant="bold-sans-serif"], mtext[mathvariant="bold-sans-serif"], mtext[mathvariant="sans-serif-italic"], 
+mtext[mathvariant="sans-serif-bold-italic"]
+	{font-family:sans-serif;
+	font-style:normal;}
+mi, mi[mathvariant="italic"], mi[mathvariant="bold-italic"],mi[mathvariant="sans-serif-italic"], 
+mi[mathvariant="sans-serif-bold-italic"],mn[mathvariant="italic"], mn[mathvariant="bold-italic"],
+mn[mathvariant="sans-serif-italic"], mn[mathvariant="sans-serif-bold-italic"],mo[mathvariant="italic"], 
+mo[mathvariant="bold-italic"],mo[mathvariant="sans-serif-italic"], mo[mathvariant="sans-serif-bold-italic"],
+ms[mathvariant="italic"], ms[mathvariant="bold-italic"],ms[mathvariant="sans-serif-italic"], 
+ms[mathvariant="sans-serif-bold-italic"],mtext[mathvariant="italic"], mtext[mathvariant="bold-italic"],
+mtext[mathvariant="sans-serif-italic"], mtext[mathvariant="sans-serif-bold-italic"]
+	{font-style:italic;}
+mi[mathvariant="normal"], mn[mathvariant="normal"], mo[mathvariant="normal"], 
+ms[mathvariant="normal"], mtext[mathvariant="normal"]
+	{font-style:normal;}
+ms:before, ms:after 
+	{content:"\0022"}
+ms[lquote]:before 
+	{content:attr(lquote)}
+ms[rquote]:after 
+	{content:attr(rquote)}
+mphantom 
+	{visibility:hidden}
+merror
+	{outline:solid thin red}
+merror:before
+	{content:"Error: "}
+mrow
+	{white-space:nowrap;}
+math[display='block']
+	{display:block;
+	margin:1em 0 1em 3em;}
+mstack, mlongdiv
+	{display:inline-table;
+	font-family:monospace;}
+mstack
+	{text-align:right;
+	border-collapse:collapse;}
+mstack[align='top'], mlongdiv[align='top']
+	{vertical-align:top;}
+mstack[align='bottom'], mlongdiv[align='bottom'] 
+	{vertical-align:bottom;}
+mstack[align='center'], mlongdiv[align='center']
+	{vertical-align:middle;}
+msline
+	{display:block;
+	border-bottom:solid thin;}
+mstack > *, mlongdiv > mn:first-child
+	{display:table-row;}
+mlongdiv > *:first-child + *
+	{display:table-cell;}
+mlongdiv > *:first-child + * + *
+	{border-top:solid thin;}
+mlongdiv > *:first-child:before
+	{display:table-cell;
+	content:'\a0';}
+mlongdiv > *:first-child + *:after
+	{content:')';}
+mlongdiv > *
+	{display:block;}
+mscarry
+	{display:none;}
+maction > * + *
+	{display:none;}
+maction[actiontype="tooltip"]:focus > * + *,
+maction[actiontype="tooltip"]:hover > * + *
+	{position:fixed;
+	display:block;
+	top:0;
+	left:0;
+	background-color:InfoBackground;
+	color:InfoText;
+	padding:0.5ex;
+	border:solid 1px;}
+annotation, annotation-xml
+	{display:none;}
+
+
+
