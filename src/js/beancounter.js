@@ -274,9 +274,25 @@ var BeanCounter = function(input_id, output_id){
     // viable in the future
     this.matho_init = Module.cwrap('init', 'void', []);
     this.js_solve = Module.cwrap('solve_function', 'number', ['string', 'string']);
+
+    var bc = this;
+    window.onhashchange = function() {
+        var eq = decodeURIComponent(window.location.hash).substring(1);
+        bc.userInput(eq);
+    };
+
+    // Init with the existing equation if we're linking
+    if(window.location.hash) {
+        var eq = decodeURIComponent(window.location.hash).substring(1);
+        if (eq != "") {
+            this.userInput(eq);
+        }
+    }
 };
 
 BeanCounter.prototype.userInput = function(value) {
+    if(value == this.expression) return;
+
     this.expression = value;
     this.history.push(value);
     this.history_index = this.history.length;
@@ -397,6 +413,8 @@ BeanCounter.prototype.update = function(expression) {
     this.expression = expression;
 
     this.clearResults();
+
+    window.location.hash = encodeURIComponent(expression);
 
     for(var i = 0; i < BeanCounterGeneral.basicPlugins.length; i++)
     {
