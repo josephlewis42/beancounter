@@ -12,7 +12,7 @@ Dual licensed GPLv3 + MIT
 (function(){
 
     var fun = function(bc){
-        bc.addResult("Beancounter Version", "0.2");
+        bc.addResult("Beancounter Version", "0.3");
     };
 
     BeanCounterGeneral.registerAdvancedPlugin("version", fun);
@@ -29,10 +29,8 @@ Dual licensed GPLv3 + MIT
         <li>JQuery - MIT License</li>\
         <li>Bootstrap - MIT License</li>\
         <li>Mathomatic - LGPL</li>\
-        <li>MathJax - Apache License V2</li>\
         </ul>");
     };
 
     BeanCounterGeneral.registerAdvancedPlugin("(?:copyright|license|about)", fun);
 })();
-

@@ -1,9 +1,9 @@
 BeanCounter
 ===========
 
-BeanCounter is an entirely web-based computer algebra system with a clean user 
+BeanCounter is an entirely web-based computer algebra system with a clean user
 interface similar to WolframAlpha. It supports feature addition through a simple
-plugin system making it adaptable to a wide variety of operations. 
+plugin system making it adaptable to a wide variety of operations.
 
 ![](https://raw.githubusercontent.com/josephlewis42/beancounter/master/screenshot.png)
 
@@ -21,7 +21,7 @@ Live demo is [available here](http://josephlewis.net/apps/BeanCounter/).
 Environment
 -----------
 
-This application can run in modern web-browsers or as a standalone app on the 
+This application can run in modern web-browsers or as a standalone app on the
 desktop through node-webkit.
 
 
@@ -40,7 +40,7 @@ as much time as WolframAlpha does to return results.
 Contributing
 ------------
 
-Patches/Addons would be welcomed, a list of potential projects (from least 
+Patches/Addons would be welcomed, a list of potential projects (from least
 difficult to most) would be:
 
 * Unit Conversion
@@ -64,6 +64,5 @@ uses several libraries that have their own licenses:
 
 * Mathomatic - LGPL
 * nodewebkit - MIT
-* MathJax - Apache v2.0
 * Bootstrap - MIT
 * JQuery - MIT

@@ -20,7 +20,7 @@ function show_tour()
         element: "#beancounter",
         placement: "bottom",
         title: "Welcome",
-        content: "Welcome to BeanCounter a calculator for the modern age"
+        content: "Welcome to BeanCounter, a calculator for the modern age"
       },
       {
         element: "#curr_eq",
@@ -47,13 +47,13 @@ function show_tour()
         element: "#aboutButton",
         title: "About",
         placement: "bottom",
-        content: "You can get more information or view the tour again from here",
+        content: "You can get more information or view the tour again from here.",
     },
     {
         element: "#results_area",
         title: "More Help",
         placement: "top",
-        content: "For now, we'll leave you with some extra help",
+        content: "For now, we'll leave you with some extra help so you can see what beancounter can do.",
         onShow: function (tour) {
             document.getElementById("curr_eq").value = "help";
             document.getElementById("curr_eq").onkeyup({which:13});

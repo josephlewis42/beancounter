@@ -12,6 +12,7 @@ var BeanCounterGeneral = {
      **/
     basicPlugins:[],
     replacements:{  "text":"([\\w]+)",
+                    "unit":"([\\w/\\*\\^]+)",
                     "integer":"([-+]?\\d+)",
                     "float":"([-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)", // http://www.regular-expressions.info/floatingpoint.html
                     "list":"((?:(?:[-+]?[0-9]*\\.?[0-9]+(?:[eE][-+]?[0-9]+)?)[\\s,]*)+)", // floating point list
@@ -129,6 +130,81 @@ var BeanCounterGeneral = {
      * function name while parsing (useful for debugging)
      **/
     registerContextualPlugin : function(matcher, fun, funname) {
+        var re_match = /{([\w]+\|[\w]+)}/gi;
+
+        var replacements = this.replacements;
+        this.basicPlugins.push(function(bc){
+            // the thing we're passing to fun later on
+            var outputMap = {};
+
+            // copy this locally because we'll be manipulating it
+            var expression = bc.expression;
+
+            var numMatches = 0;
+
+            // for each item in the matcher, we need to see if it works.
+            for(var i = 0; i < matcher.length; i++) {
+                var item = matcher[i];
+
+                // These are the names of the things to capture, e.g. "{integer|Int}" -> "Int"
+                var capture_names = [];
+
+                // Next we look up matches for the conversions and replace them in the regex
+                // with the actual expression they represent.
+                while ( ( match = re_match.exec( item ) ) ){
+                    console.log(match);
+                    var val = match[1].split("|")[0];
+                    var name = match[1].split("|")[1];
+
+                    capture_names.push(name);
+                    item = item.replace(match[0], replacements[val]);
+                    numMatches += 1;
+                }
+
+                console.log("Trying to get: " + capture_names);
+                console.log("With regex: " + item);
+                console.log("From string: " + expression);
+
+                // Construct a regexp from the whole matching sequence we can
+                // capture over the current beancounter input
+                var rx = new RegExp(item, "gi");
+                var captures = rx.exec(expression);
+                console.log("captures: " + captures);
+
+                if(captures == null) {
+                    continue;
+                }
+
+                // Remove each capture from the expression for the next time
+                // around, so we don't end up copying something multiple times.
+                for(var j = 0; j < captures.length; j++) {
+                    var captured = captures[j];
+                    var capsplit = expression.indexOf(captured) ;
+
+                    if(capsplit == -1) {
+                        continue
+                    }
+
+                    console.log("capture location: " + capsplit + " curr: " + expression);
+                    expression = expression.substring(capsplit + captured.length);
+                    console.log(expression)
+
+                    if(capture_names[j] != undefined) {
+                        outputMap[capture_names[j]] = captured;
+                    }
+                }
+            }
+
+            if (Object.keys(outputMap).length != numMatches) {
+                console.log("Wrong number of matches expected: " + numMatches);
+                console.log(outputMap);
+                return;
+            }
+            console.log(outputMap);
+            fun(bc, outputMap);
+        });
+
+
 
         // TODO implement me
 
@@ -328,10 +404,6 @@ BeanCounter.prototype.update = function(expression) {
         var plugin = BeanCounterGeneral.basicPlugins[i];
         plugin(this);
     }
-
-
-    // do cleanup for the user before results are shown.
-    MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
 };
 
 // Processes an expression using the matho engine
