@@ -480,6 +480,9 @@ BeanCounter.prototype.evalList = function(list){
     // TODO replace this with list comprehensions when EMCA 7 comes out
     for(var i in nums) {
         console.log(output);
+        if(nums[i] == "") {
+            continue
+        }
         output.push(parseFloat(nums[i]));
     }
 
