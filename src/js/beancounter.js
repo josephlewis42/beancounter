@@ -6,6 +6,7 @@ Copyright 2014 - Joseph Lewis III <joseph@josephlewis.net>
 Dual licensed GPLv3 + MIT
 **/
 
+
 var BeanCounterGeneral = {
     /** Basic plugins are a simple function that takes in the BeanCounter
      * instance each time the user enters text and is executed.
@@ -280,14 +281,6 @@ var BeanCounter = function(input_id, output_id){
         var eq = decodeURIComponent(window.location.hash).substring(1);
         bc.userInput(eq);
     };
-
-    // Init with the existing equation if we're linking
-    if(window.location.hash) {
-        var eq = decodeURIComponent(window.location.hash).substring(1);
-        if (eq != "") {
-            this.userInput(eq);
-        }
-    }
 };
 
 BeanCounter.prototype.userInput = function(value) {
@@ -512,3 +505,13 @@ BeanCounter.prototype.isEquation = function()
     "use strict"; // strict mode for intelligence.
     return (this.expression.indexOf("=") >= 0);
 };
+
+require(["js/parsers/calculator"], function() {
+    console.log("loaded calculator");
+    BeanCounter.prototype.evaluate = parser.parse;
+});
+/**
+ "js/parsers/latex_generator.js", "js/parsers/mathml_generator.js"
+    BeanCounter.prototype.latexify = latex.parser;
+    BeanCounter.prototype.mathmlify = mathml.parser;
+**/

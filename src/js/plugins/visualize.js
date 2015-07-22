@@ -64,6 +64,20 @@
 })();
 
 
+// an alternate using our new module
+(function(){
+
+    var fun = function(bc){
+        var exp = bc.expression;
+        var res = bc.evaluate(exp);
+        bc.addResult("Answer2", "" + res);
+    };
+
+    BeanCounterGeneral.registerAdvancedPlugin("{expression|Exp}", fun);
+})();
+
+
+
 // shows hello world
 (function(){
     var visualize = function(bc, matched){

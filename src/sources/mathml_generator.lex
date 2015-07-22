@@ -68,3 +68,7 @@ e
     | VARNAME
         {$$ = "<mi>" + yytext + "</mi>";}
     ;
+
+%%
+
+var Mathmlify = parser.parse;

@@ -37,7 +37,7 @@
 expressions
     : e '=' e EOF
         {return  "{" + $1 + "} = {" + $3 + "}";}
-    
+
     | e EOF
         {console.log($1); return $1;}
     ;
@@ -68,3 +68,7 @@ e
     | VARNAME
         {$$ = yytext;}
     ;
+
+%%
+
+var Latexify = parser.parse;
