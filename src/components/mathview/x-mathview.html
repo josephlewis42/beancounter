@@ -1,0 +1,125 @@
+<!-- Polymer element start -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+
+<!-- A math viewer using css! -->
+<dom-module id="x-mathview">
+
+    <style type="text/css">
+
+    #matharea {
+        font-family:arial;
+        border: 1px solid gray;
+        color:#333;
+        padding: 1em;
+        margin:1em;
+    }
+
+    #actual {
+        text-align: center;
+        margin: 1em;
+        font-size:1.2em;
+    }
+
+    #sources th {
+        text-align:right;
+    }
+
+    /** toggling **/
+    #sources {
+        display:none;
+    }
+
+    #toggle:checked + #sources {
+        display:block;
+    }
+
+    #sourcearea {
+        font-size:.8em;
+        color:grey;
+    }
+
+    </style>
+    <template>
+        <div id="matharea">
+            <div id="actual"></div>
+
+            <div id="sourcearea">
+                <input type="checkbox" id="toggle">&lt;/&gt; Show Source</input>
+                <!-- Copyable source -->
+                <table id="sources" style="">
+                    <tbody>
+                        <tr>
+                            <th>Plain</th>
+                            <td><code id="plain"></pre></td>
+                        </tr>
+                        <tr>
+                            <th>LaTeX</th>
+                            <td><code id="latex"></pre></td>
+                        </tr>
+                        <tr>
+                            <th>MathML</th>
+                            <td><code id="mathml"></pre></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Loads the latex parser as "parser", unfourtinately it seems that jison
+        doesn't support changing names so we'll do it ourselves. -->
+    <script type="text/javascript" src="latex_generator.js"></script>
+    <script type="text/javascript">
+        latex_parser = parser;
+    </script>
+
+    <!-- Loads the mathml parser as "parser", unfourtinately it seems that jison
+    doesn't support changing names so we'll do it ourselves. -->
+    <script type="text/javascript" src="mathml_generator.js"></script>
+    <script type="text/javascript">
+        mathml_parser = parser;
+    </script>
+
+    <script type="text/javascript">
+        // element registration
+        Polymer({
+            is: "x-mathview",
+
+            properties: {
+                // declare properties for the element's public API
+                math: {
+                    type: String,
+                    value: ""
+                }
+            },
+
+            ready: function() {
+                this.$$("#plain").textContent = this.math;
+                this.$$("#latex").textContent = latex_parser.parse(this.math);
+                var mathMl = mathml_parser.parse(this.math);
+                this.$$("#mathml").textContent = mathMl;
+                this.$$("#actual").innerHTML = mathMl;
+
+
+                        var box, div, link, namespaceURI;
+                        // First check whether the page contains any <math> element.
+                        namespaceURI = "http://www.w3.org/1998/Math/MathML";
+                        // Create a div to test mspace, using Kuma's "offscreen" CSS
+                        document.body.insertAdjacentHTML("afterbegin", "<div style='border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px;'><math xmlns='" + namespaceURI + "'><mspace height='23px' width='77px'></mspace></math></div>");
+                        div = document.body.firstChild;
+                        box = div.firstChild.firstChild.getBoundingClientRect();
+                        document.body.removeChild(div);
+                        if (Math.abs(box.height - 23) > 1  || Math.abs(box.width - 77) > 1) {
+                            // Insert the mathml.css stylesheet.
+                            link = document.createElement("link");
+                            link.href = "mathml.css";
+                            link.rel = "stylesheet";
+                            document.head.appendChild(link);
+                        }
+
+            }
+        });
+    </script>
+</dom-module>

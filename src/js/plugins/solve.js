@@ -9,25 +9,25 @@ Licensed under the GPLv3 and MIT licenses.
 (function(){
 
     var fun = function(bc, matches){
-        
+
         var exp = matches['Exp'];
-        
-        // Ensure we have a solvable system.        
+
+        // Ensure we have a solvable system.
         if( ! bc.isEquation() ||
             bc.hasNumericalAnswer()){
             return;
         }
-        
+
         // Get the variables we can solve for
         var res = bc.processEquation(exp, "variables");
         var variables = res.split("\n");
-        
+
         if(variables.length == 0){
             return;
         }
-        
+
         var sols = [];
-        
+
         var i;
         for(i = 0; i < variables.length; i++)
         {
@@ -37,10 +37,10 @@ Licensed under the GPLv3 and MIT licenses.
 
             var res = bc.processEquation(exp, "solve " + variables[i]);
             var res2 = bc.latexify(res) || res;
-            
+
             sols.push("<b>Solve for " + variables[i] + "</b><br><p>" + res2 + "</p>");
         }
-        
+
         bc.addResult("Solutions", sols.join("<br>"));
     };
 
